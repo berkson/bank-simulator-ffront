@@ -1,0 +1,73 @@
+:host {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 0px;
+  }
+
+  
+  .formCard{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-flow: column;
+    justify-content: space-between;
+    margin: 20px calc(100vw/10);
+    width: 80%;
+  }
+
+  .space{
+    margin: 5px ;
+  }
+
+  .grow2{
+    flex-grow: 2;
+  }
+
+  mat-form-field {
+    width: -webkit-fill-available;
+    width: 24vw;
+  }
+  
+  mat-card-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    font-size: x-large;
+  }
+  
+  // mat-card-content {
+  //   display: flex;
+  //   justify-content: center;
+  //   width: 26vw;
+  // }
+
+  .formUser{
+    display: flex;
+    flex-direction: column !important;
+  }
+
+  
+  .error {
+    padding: 16px;
+    width: 300px;
+    color: white;
+    background-color: red;
+  }
+  
+  .button {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .red{
+    background-color: red;
+  }
+
+  .operationButton {
+    display: flex;
+    justify-content: space-between;
+    ;
+  }
+  

@@ -1,19 +1,120 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
+@use "./styles/typography/_config" as typo;
+// custom palette for my application
+@use "./styles/palette/_cpalette.scss" as cpalette;
+// Plus imports for other components in your app.
+@use "sass:map";
+@use "sass:math";
 
-html {
-  @include mat.theme((
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the theme object.
+
+$amc-primary: mat.m2-define-palette(cpalette.$lmt-primary);
+$amc-accent: mat.m2-define-palette(cpalette.$lmt-accent, 500, 300, 900);
+$amc-warn: mat.m2-define-palette(cpalette.$lmt-warn);
+
+$amc-theme: mat.m2-define-light-theme(
+  (
     color: (
-      theme-type: light,
-      primary: mat.$azure-palette,
-      tertiary: mat.$blue-palette,
+      primary: $amc-primary,
+      accent: $amc-accent,
+      warn: $amc-warn,
     ),
-    typography: Roboto,
-    density: 0,
-  ));
-}/* You can add global styles to this file, and also import other style files */
+  )
+);
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+
+@include mat.all-component-themes($amc-theme);
+
+// Comment out the line below if you want to use the pre-defined typography utility classes.
+// For more information: https://material.angular.io/guide/typography#using-typography-styles-in-your-application.
+// @include mat.typography-hierarchy($amc-movel-theme);
+
+// Comment out the line below if you want to use the deprecated `color` inputs.
+// @include mat.color-variants-backwards-compatibility($amc-movel-theme);
+/* You can add global styles to this file, and also import other style files */
+// custom typografy
+
+$color-config: mat.m2-get-color-config($amc-theme);
+$primary-palette: map.get($color-config, "primary");
+$accent-palette: map.get($color-config, "accent");
+$warn-palette: map.get($color-config, "warn");
+
+$primary: mat.m2-get-color-from-palette($primary-palette, 500);
+$accent: mat.m2-get-color-from-palette($accent-palette, 500);
+$warn: mat.m2-get-color-from-palette($warn-palette, 500);
+$font-family: "OpenSans-Regular, 'Helvetica Neue', sans-serif";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: $font-family;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.style-success {
+  color: white !important;
+  --mdc-snackbar-container-color: green !important;
+  white-space: pre-wrap !important;
+}
+
+.style-success .mat-mdc-snack-bar-action {
+  color: white !important;
+  white-space: pre-wrap !important;
+}
+
+.style-error {
+  --mdc-snackbar-container-color: red;
+  --mat-mdc-snack-bar-button-color: red;
+  white-space: pre-wrap !important;
+}
+
+.style-error .mat-mdc-snack-bar-action {
+  color: mat.m2-get-color-from-palette($warn-palette, "A200") !important;
+  white-space: pre-wrap !important;
+}
+
+.selected-row:hover {
+  background-color: mat.m2-get-color-from-palette($accent-palette);
+  cursor: pointer;
+}
+
+.center,
+::ng-deep .center {
+  text-align: center;
+  text-align: -webkit-center;
+}
+
+@function property-value($property, $selector: null) {
+  @return $magic;
+}
+
+@function get-vw($target) {
+  $vw-context: calc((1000 * 0.01) * 1px);
+  @return calc(($target/$vw-context) * 1vw);
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

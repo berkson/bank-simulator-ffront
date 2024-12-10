@@ -1,0 +1,118 @@
+  <mat-card class="formCard">
+    <mat-card-title>Cadastrar Usuário</mat-card-title>
+  <mat-card-content>
+  <form id="formUser" [formGroup]="formUser" (ngSubmit)="register()">
+  <p>
+    <mat-form-field class="space" appearance="outline">
+      <mat-label>CPF</mat-label>
+      <input matInput formControlName="username" mask="999.999.999-99">
+      @if (formUser.controls['username'].hasError('required')) {
+      <mat-error>{{validationMessages.requiredUserName}}</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field class="space" appearance="outline">
+      <mat-label>Senha</mat-label>
+      <input type="password" matInput formControlName="password" [minlength]="minLength">
+      @if (formUser.controls['password'].hasError('required') || formUser.controls['password'].hasError('minlength')) {
+      <mat-error>{{validationMessages.minMaxLength(minLength, maxLength)}}</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field class="space" appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input type="text" matInput formControlName="name" [minlength]="minNameLength">
+      @if (formUser.controls['name'].hasError('required') || formUser.controls['name'].hasError('minlength')) {
+      <mat-error>{{validationMessages.minMaxLength(minNameLength, maxNameLength)}}</mat-error>
+      }
+    </mat-form-field> 
+    <mat-form-field class="space" appearance="outline">
+      <mat-label>Idade</mat-label>
+      <input matInput formControlName="age" mask="999" [min]="minAge" [max]="maxAge">
+      @if (formUser.controls['age'].hasError('required')) {
+      <mat-error>{{validationMessages.ageRequired}}</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field class="space" appearance="outline">
+      <mat-label>Conta</mat-label>
+      <input  matInput formControlName="account" [minlength]="minLength" [min]="minAccount" [max]="maxAccount" mask="9999999999">
+      @if (formUser.controls['account'].hasError('required') || formUser.controls['account'].hasError('max') ) {
+      <mat-error>{{validationMessages.minMax(minAccount, maxAccount)}}</mat-error>
+      }
+    </mat-form-field>
+  </p>
+  
+  <div class="operationButton">
+    <button type="submit" mat-raised-button color="primary">Salvar</button>
+    <button class="red" type="button" (click)="cleanUser()" mat-raised-button color="primary">Limpar</button>
+  </div>
+  
+  </form>
+  </mat-card-content>
+  </mat-card>
+
+
+<mat-card class="grow1">
+  <mat-card-title>Tem uma Conta?</mat-card-title>
+<mat-card-content>
+<form [formGroup]="form" (ngSubmit)="login()">
+<p>
+  <mat-form-field appearance="outline">
+    <mat-label>CPF</mat-label>
+    <input matInput formControlName="username" mask="999.999.999-99">
+    @if (form.controls['username'].hasError('required')) {
+    <mat-error>{{validationMessages.requiredUserName}}</mat-error>
+    }
+  </mat-form-field>
+</p>
+
+<p>
+  <mat-form-field appearance="outline">
+    <mat-label>Senha</mat-label>
+    <input type="password" matInput formControlName="password" [minlength]="minLength">
+    @if (form.controls['password'].hasError('required') || form.controls['password'].hasError('minlength')) {
+    <mat-error>{{validationMessages.minMaxLength(minLength, maxLength)}}</mat-error>
+    }
+  </mat-form-field>
+</p>
+
+<div class="button">
+  <button type="submit" mat-raised-button color="primary">Login</button>
+</div>
+
+</form>
+</mat-card-content>
+</mat-card>
+
+
+<mat-card class="grow1">
+  <mat-card-title>Caixa</mat-card-title>
+<mat-card-content>
+<form [formGroup]="formBox" (ngSubmit)="credit()">
+<p>
+  <mat-form-field appearance="outline">
+      <mat-label>Conta</mat-label>
+      <input  matInput formControlName="account" [minlength]="minLength" [min]="minAccount" [max]="maxAccount" mask="9999999999">
+      @if (formBox.controls['account'].hasError('required') || formBox.controls['account'].hasError('max') || formBox.controls['account'].hasError('min') ) {
+      <mat-error>{{validationMessages.minMax(minAccount, maxAccount)}}</mat-error>
+      }
+  </mat-form-field>
+</p>
+
+<p>
+  <mat-form-field appearance="outline">
+    <mat-label>Valor</mat-label>
+    <input matInput formControlName="value" [maxlength]="maxValueLength"  mask="9999999999">
+    @if (formBox.controls['value'].hasError('required') || formBox.controls['value'].hasError('maxlength')) {
+    <mat-error>{{validationMessages.minMax(1, 9999999999)}}</mat-error>
+    }
+  </mat-form-field>
+</p>
+
+<div class="operationButton">
+  <button type="submit" mat-raised-button color="primary">Crédito</button>
+  <button type="button" (click)="debit()" mat-raised-button color="primary">Débito</button>
+</div>
+
+</form>
+</mat-card-content>
+</mat-card>
+

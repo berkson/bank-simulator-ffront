@@ -1,0 +1,64 @@
+@use "../styles.scss" as st;
+
+$sidenav_content_padding: 0vh;
+$sidenav_content_height: calc(90vh - $sidenav_content_padding);
+
+.toolbar-icon {
+  padding: 0 14px;
+}
+
+.mat-toolbar-single-row {
+  white-space: normal;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.toolbar-menu-spacer {
+  margin: 10px;
+}
+
+.mat-drawer.mat-drawer-push {
+  background-color: st.$primary  !important;
+}
+
+.menuButton {
+  background-color: inherit;
+  color: white;
+}
+
+
+mat-sidenav {
+  width: 200px;
+}
+
+mat-sidenav-container {
+  height: max-content;
+  width: 100%;
+}
+
+mat-sidenav-content {
+  height: $sidenav_content_height;
+  padding: $sidenav_content_padding;
+}
+
+
+@media only screen and (max-width: 1024px) {
+  mat-sidenav {
+    width: 20%;
+  }
+
+}
+
+@media only screen and (max-width: 800px) {
+  mat-sidenav {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  mat-sidenav {
+    width: 50%;
+  }
+}

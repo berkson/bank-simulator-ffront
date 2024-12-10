@@ -1,0 +1,10 @@
+.bottom-page{
+  position: fixed;
+  height: fit-content;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  bottom: 0;
+  flex-direction: column;
+  justify-content: center;
+  white-space: unset;
+}

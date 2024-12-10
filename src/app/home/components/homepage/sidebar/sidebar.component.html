@@ -1,0 +1,119 @@
+<mat-list>
+  <mat-list-item>
+    <mat-panel-title>
+      <a class="menuItem">Olá, {{user.name}}</a>
+    </mat-panel-title>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-expansion-panel (opened)='panelOpenState = true' (closed)='panelOpenState = false'>
+    @if(isAdmin()){
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <a class="menuItem">Usuários</a>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    }
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <a class="menuItem" routerLink='/list-user'>Lista de Usuários</a>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <a class="menuItem" routerLink='/register-user'>Cadastrar Usuário</a>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </mat-expansion-panel>
+  <mat-divider></mat-divider>
+  <mat-expansion-panel (opened)='panelOpenState = true' (closed)='panelOpenState = false'>
+    @if( isAdmin()){
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <a class="menuItem">Função</a>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    }
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <a class="menuItem" routerLink='/cadastro-funcao'>Cadastrar Função</a>
+    </mat-list-item>
+  </mat-expansion-panel>
+  <mat-divider></mat-divider>
+  <mat-expansion-panel (opened)='panelOpenState = true' (closed)='panelOpenState = false'>
+    @if( isAdmin()){
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <a class="menuItem">Setor</a>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    }
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <a class="menuItem" routerLink='/cadastro-setor'>Cadastrar Setor</a>
+    </mat-list-item>
+  </mat-expansion-panel>
+  <mat-divider></mat-divider>
+  <mat-expansion-panel (opened)='panelOpenState = true' (closed)='panelOpenState = false'>
+    @if( isAdmin()){
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <a class="menuItem">Destacamento</a>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    }
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <a class="menuItem" routerLink='/cadastro-destacamento'>Cadastrar Destacamento</a>
+    </mat-list-item>
+  </mat-expansion-panel>
+  <mat-divider></mat-divider>
+  <mat-expansion-panel (opened)='panelOpenState = true' (closed)='panelOpenState = false'>
+    @if( isAdmin()){
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <a class="menuItem">Notificações</a>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    }
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <a class="menuItem" routerLink='cadastra-comunicados'>Enviar Notificação</a>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <a class="menuItem" routerLink='lista-comunicados'>Listar Notificações</a>
+    </mat-list-item>
+  </mat-expansion-panel>
+  <mat-divider></mat-divider>
+  @if( isAdmin()){
+  <mat-list-item>
+    <a class="menuItem" routerLink='consulta-apr'>Consulta APR</a>
+  </mat-list-item>
+  }
+  <mat-divider></mat-divider>
+  <mat-expansion-panel (opened)='panelOpenState = true' (closed)='panelOpenState = false'>
+    @if( isAdmin()){
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <a class="menuItem">Contracheque</a>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    }
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <a class="menuItem" routerLink='/envio-contracheque'>Enviar Contracheque</a>
+    </mat-list-item>
+  </mat-expansion-panel>
+  <mat-divider></mat-divider>
+  <mat-expansion-panel disabled>
+    <mat-expansion-panel-header class="download-header">
+      <mat-panel-title class="download-title">
+        @if(!isDownloading){
+        <a class="download" mat-flat-button>Baixar App
+          Android</a>
+        } @else {
+        <mat-spinner mode="indeterminate" diameter="25"></mat-spinner>
+        }
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+  </mat-expansion-panel>
+</mat-list>
